@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节假日添加</title>
+	
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+    <style>
+		.layui-form-select dl {
+		    max-height: 200px;
+		}
+	</style>
+</head>
+
+<body>
+<form action="">
+    <table>
+        <tr><td>所在年份:<input type="text" name="year" placeholder="请输入年份"></td></tr>
+        <tr>
+            <td>节日:<input type="text" name="name[]"></td>
+            <td>开始时间:<input type="text" name="addtime[]"></td>
+            <td>放假天数:<input type="text" name="num[]"></td>
+            <td>补班日期: <input type="text" name="repairTime[]"></td>
+        </tr>
+        <tr>
+            <td>节日:<input type="text" name="name[]"></td>
+            <td>开始时间:<input type="text" name="addtime[]"></td>
+            <td>放假天数:<input type="text" name="num[]"></td>
+            <td>补班日期: <input type="text" name="repairTime[]"></td>
+        </tr>
+        <tr>
+            <td>节日:<input type="text" name="name[]"></td>
+            <td>开始时间:<input type="text" name="addtime[]"></td>
+            <td>放假天数:<input type="text" name="num[]"></td>
+            <td>补班日期: <input type="text" name="repairTime[]"></td>
+        </tr>
+        <tr>
+            <td>节日:<input type="text" name="name[]"></td>
+            <td>开始时间:<input type="text" name="addtime[]"></td>
+            <td>放假天数:<input type="text" name="num[]"></td>
+            <td>补班日期: <input type="text" name="repairTime[]"></td>
+        </tr>
+        <tr>
+            <td>节日:<input type="text" name="name[]"></td>
+            <td>开始时间:<input type="text" name="addtime[]"></td>
+            <td>放假天数:<input type="text" name="num[]"></td>
+            <td>补班日期: <input type="text" name="repairTime[]"></td>
+        </tr>
+        <tr>
+            <td>节日:<input type="text" name="name[]"></td>
+            <td>开始时间:<input type="text" name="addtime[]"></td>
+            <td>放假天数:<input type="text" name="num[]"></td>
+            <td>补班日期: <input type="text" name="repairTime[]"></td>
+        </tr>
+        <tr>
+            <td>节日:<input type="text" name="name[]"></td>
+            <td>开始时间:<input type="text" name="addtime[]"></td>
+            <td>放假天数:<input type="text" name="num[]"></td>
+            <td>补班日期: <input type="text" name="repairTime[]"></td>
+        </tr>
+    </table>
+    <input id="addUser" type="button" value="立即保存">
+</form>
+
+<script type="text/javascript">
+    $('#addUser').on('click', function(){
+        $.ajax({
+            url:'{:url('Index/add')}',
+            type:"post",
+            dataType:"json",
+            data:$("form").serialize(),
+            timeout:30000,
+            success:function(result){
+                if(result[0]=='ERROR'){
+                    alert('添加失败');
+                    return false;
+                }
+                alert('添加成功')
+                window.location.href='{:url('Index/data')}?id='+result[1];
+            }
+        });
+    })
+     
+</script>
+</body>
+</html>

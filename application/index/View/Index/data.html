@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节假日管理</title>
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+</head>
+
+<body>
+<form action="">
+    <input type="hidden" name="code" value="{$content['id']}">
+    <table>
+        <tr><td>所在年份:<input type="text" name="year" placeholder="请输入年份" value="{$content['year']}"></td></tr>
+        {volist name="list" id="vo"}
+        <tr>
+            <td>节日:<input type="text" name="name[]" value="{$vo.name}"></td>
+            <td>开始时间:<input type="text" name="addtime[]" value="{$vo.time}"></td>
+            <td>放假天数:<input type="text" name="num[]" value="{$vo.fatalism}"></td>
+            <td>补班日期: <input type="text" name="repairTime[]" value="{$vo.repair}"></td>
+        </tr>
+        {/volist}
+    </table>
+    <input id="addUser" type="button" value="立即保存">
+</form>
+
+<script type="text/javascript">
+    $('#addUser').on('click', function(){
+        $.ajax({
+            url:'{:url('Index/data')}',
+            type:"post",
+            dataType:"json",
+            data:$("form").serialize(),
+            timeout:30000,
+            success:function(result){
+                alert(result[1]);
+                if(result[0]=='ERROR'){
+                    return false;
+                }
+
+                window.location.reload();
+            }
+        });
+    })
+     
+</script>
+</body>
+</html>

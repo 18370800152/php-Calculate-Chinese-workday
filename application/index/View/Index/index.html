@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节假日列表</title>
+</head>
+<style type="text/css">
+	table{border-top: 1px solid #ccc;border-left: 1px solid #ccc;}
+	table td{text-align: center;}
+	table td,table th{border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+</style>
+<body>
+	<a href="{:url('Index/add')}" target="_blank">添加</a>
+	<table width="100%">
+		<tr><th>id</th><th>年份</th><th>添加时间</th><th>操作</th></tr>
+		{volist name="list" id="vo"}
+		<tr><td>{$vo.id}</td><td>{$vo.year}</td><td>{$vo.addtime}</td><td><a href="{:url('Index/data')}?id={$vo['id']}">修改</a></td></tr>
+		{/volist}
+	</table>
+
+</body>
+</html>
