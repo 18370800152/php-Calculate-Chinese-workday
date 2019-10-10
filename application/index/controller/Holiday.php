@@ -45,7 +45,7 @@ class Holiday
 				return $this->WorkingDay;
 
 			default:
-				return $this->WorkingDay[count($this->WorkingDay)-1];
+				return $this->WorkingDay[$this->num-1];
 		}
 	}
 
