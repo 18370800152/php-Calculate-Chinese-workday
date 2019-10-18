@@ -31,6 +31,13 @@ class Holiday
 			echo json_encode(['error', '要获取的天数必须是正整数']);
 			exit;
 		}
+		
+		if(empty($this->time))
+		{
+			echo json_encode(['error', '获取的开始时间必须是指定格式']);
+			exit;
+		}
+		$this->foreign();
 	}
 
 	/**
