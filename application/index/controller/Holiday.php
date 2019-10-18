@@ -80,7 +80,7 @@ class Holiday
 
 		$this->WorkingDay = array_values($this->WorkingDay);
 
-		$this->key = count($this->WorkingDay) - 1;
+		$this->key = (count($this->WorkingDay) - 1) < 0 ? 0 : (count($this->WorkingDay) - 1);
 
 		//当前数据数量和指定数量是否一致
 		if(count($this->WorkingDay) < $this->num)
