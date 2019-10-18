@@ -23,11 +23,14 @@ class Holiday
 	 */
 	function __construct($num,$festime,$time)
 	{
-		$this->num     		= $num;
+		$this->num     	    = (int)$num;
 		$this->festivalTime = $festime;
 		$this->time         = $time;
-
-		$this->foreign();
+		if($this->num <= 0)
+		{
+			echo json_encode(['error', '要获取的天数必须是正整数']);
+			exit;
+		}
 	}
 
 	/**
