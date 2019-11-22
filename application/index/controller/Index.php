@@ -163,8 +163,17 @@ class Index extends Controller
 			exit;
 		}
 		
-		$festival = Db::name('festival')->where('year', date('Y'))->value('festival');
-		$festival = json_decode($festival, true);
+		$arr = Db::name('festival')->where('year', '>=', date('Y'))->column('festival');
+
+		$festival = [];
+		foreach ($arr as $key => &$value) 
+		{
+			$value = json_decode($value, true);
+			foreach ($value as $k => $v) 
+			{
+				$festival[] = $v;
+			}
+		}
 
 		$ret = new Holiday($num, $festival, strtotime($starttime));
 
