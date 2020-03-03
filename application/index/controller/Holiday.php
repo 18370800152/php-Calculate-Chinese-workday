@@ -152,9 +152,9 @@ class Holiday
 		{
 			$time = strtotime($value['time']);
 
-			for ($i = 1; $i <= $value['fatalism']; $i++)
+			for ($i = 0; $i < $value['fatalism']; $i++)
 			{
-				$data[] = $time + $this->oneDay*$i;
+				$data[] = date('Y-m-d', $time + $this->oneDay*$i);
 			}
 
 			//把加班和放假的数据单独提出来防止多次循环后出现内存泄漏
@@ -168,6 +168,7 @@ class Holiday
 				$this->festivalTime['time'] = $data;
 				$this->festivalTime['repair'] = $value['repair'];
 			}
+			unset($data);
 		}
 	}
 
